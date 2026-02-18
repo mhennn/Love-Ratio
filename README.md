@@ -19,7 +19,9 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 3. ENJOY!
-Visit: https://love-ratio.streamlit.app/
+```bash
+https://love-ratio.streamlit.app/
+```
 ---
 
 ##### Love Ratio is in the Air 💘
