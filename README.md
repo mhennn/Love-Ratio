@@ -4,7 +4,7 @@ You got someone special right now? Someone who got your attention? Why don't you
 ---
 
 ### Streamlit Ui Preview
-![Streamlit_Ui_Preview](./sample_ui/love_ratio_ui.png)
+![Streamlit_Ui_Preview](./sample_ui/love_ratio.png)
 
 ### How to check?
 1. Enable environment
