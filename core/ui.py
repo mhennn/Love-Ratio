@@ -13,7 +13,7 @@ class UiApp:
             page_icon="💞",
         )
         st.markdown(
-            "<h5>You're in talking stage? Find out your Love Ratio 💘</h5>",
+            "<h6>You're in talking stage? Find out your Love Ratio 💘</h6>",
             unsafe_allow_html=True
         )
         st.markdown(
