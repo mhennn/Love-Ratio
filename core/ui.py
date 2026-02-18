@@ -36,7 +36,7 @@ class UiApp:
             self.your_name = st.text_input("And you are?", key="lover")
 
             self.how_long = st.text_input("How long you've known each other?", key="talking_stage", help="Number of days")
-            self.hours_talking = st.text_input("How long you spent talking to each other every day?", key="talking_hours", help="Number of hours")
+            self.hours_talking = st.text_input("How long you spent talking to each other everyday?", key="talking_hours", help="Number of hours")
             
             if self.how_long and self.hours_talking:
                 if st.button("Calculate"):
