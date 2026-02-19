@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 from core.love_calculation import RatioCalculation
+from streamlit_extras.let_it_rain import rain
 
 class UiApp:
     def __init__(self):
@@ -51,6 +52,14 @@ class UiApp:
                         if self.love_loading():
                             st.text_input(f"{self.your_name} and {self.talking_partner} have", value=f"{self.interaction_love} LOVE RATIO 💝", key="interaction_result")
                             st.text_input(f"{self.your_name} and {self.talking_partner} spent", value=f"{self.available_ratio} most of the time talking everyday ⏰", key="available_result")
+                            if self.ratio_calculation.talking_ratio >= 50 and self.ratio_calculation.available_life_ratio >= 50:
+                                self.rain_both()
+                            elif self.ratio_calculation.talking_ratio >= 50 and self.ratio_calculation.available_life_ratio <50:
+                                self.rain_one()
+                            elif self.ratio_calculation.talking_ratio < 50 and self.ratio_calculation.available_life_ratio >= 50:
+                                self.rain_one()
+                            else:
+                                self.rain_none()
             else:
                 st.warning("Enter hours and days")
 
@@ -68,3 +77,12 @@ class UiApp:
         time.sleep(1)
         st.success("Calculating Love Ratio Completed 💌")
         return True
+    
+    def rain_both(self):
+        rain("💘💝", font_size=54, falling_speed=5, animation_length=2)
+
+    def rain_one(self):
+        rain("💘🙂", font_size=54, falling_speed=5, animation_length=2)
+    
+    def rain_none(self):
+        rain("🥲😭", font_size=54, falling_speed=5, animation_length=2)
