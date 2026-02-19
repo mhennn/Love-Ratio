@@ -6,6 +6,14 @@ You got someone special right now? Someone who got your attention? Why don't you
 ### Streamlit Ui Preview
 ![Streamlit_Ui_Preview](./sample_ui/love_ratio.png)
 
+### Curious on how it is calculated?
+$$
+LoveRatio = (\frac{Hours}{Days})\times 100
+$$
+$$
+LifeCycle= (\frac{Hours}{AvailableTime})\times 100
+$$
+
 ### How to check?
 1. Enable environment
 ```bash

@@ -4,6 +4,7 @@ from core.love_calculation import RatioCalculation
 
 class UiApp:
     def __init__(self):
+        self.DIGITS = [1,2,3,4,5,6,7,8,9,0]
         st.markdown(
             '<h1>Love Ratio 💞</h1>',
             unsafe_allow_html=True
@@ -35,15 +36,21 @@ class UiApp:
             self.talking_partner = st.text_input("Who got your attention right now? 😻", key="partner")
             self.your_name = st.text_input("And you are?", key="lover")
 
-            self.how_long = st.text_input("How long you've known each other?", key="talking_stage", help="Number of days")
-            self.hours_talking = st.text_input("How long you spent talking to each other everyday?", key="talking_hours", help="Number of hours")
+            self.how_long = st.text_input("How long you've known each other?", key="talking_stage", help="Number of days").replace('.','')
+            self.hours_talking = st.text_input("How long you spent talking to each other everyday?", key="talking_hours", help="Number of hours").replace('.','',1)
             
             if self.how_long and self.hours_talking:
-                if st.button("Calculate"):
-                    self.calculate_love(self.hours_talking, self.how_long)
-                    if self.love_loading():
-                        st.text_input(f"{self.your_name} and {self.talking_partner} have", value=f"{self.interaction_love} LOVE RATIO 💝", key="interaction_result")
-                        st.text_input(f"{self.your_name} and {self.talking_partner} spent", value=f"{self.available_ratio} most of the time talking everyday ⏰", key="available_result")
+                try:
+                    if int(self.how_long) in self.DIGITS and int(self.hours_talking) in self.DIGITS:
+                        pass
+                except ValueError:
+                    st.warning("Input number Only.")
+                else:
+                    if st.button("Calculate"):
+                        self.calculate_love(self.hours_talking, self.how_long)
+                        if self.love_loading():
+                            st.text_input(f"{self.your_name} and {self.talking_partner} have", value=f"{self.interaction_love} LOVE RATIO 💝", key="interaction_result")
+                            st.text_input(f"{self.your_name} and {self.talking_partner} spent", value=f"{self.available_ratio} most of the time talking everyday ⏰", key="available_result")
             else:
                 st.warning("Enter hours and days")
 
