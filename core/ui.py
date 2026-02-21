@@ -37,8 +37,10 @@ class UiApp:
             self.talking_partner = st.text_input("Who got your attention right now? 😻", key="partner")
             self.your_name = st.text_input("And you are?", key="lover")
 
-            self.how_long = st.text_input("How long you've known each other?", key="talking_stage", help="Number of days").replace('.','')
-            self.hours_talking = st.text_input("How long you spent talking to each other everyday?", key="talking_hours", help="Number of hours").replace('.','',1)
+            self.how_long = st.text_input("How long you've known each other?", key="talking_stage",
+                                          help="Number of days").replace('.','')
+            self.hours_talking = st.text_input("How long you spent talking to each other everyday?", key="talking_hours",
+                                               help="Number of hours").replace('.','',1)
             
             if self.how_long and self.hours_talking:
                 try:
@@ -50,8 +52,10 @@ class UiApp:
                     if st.button("Calculate"):
                         self.calculate_love(self.hours_talking, self.how_long)
                         if self.love_loading():
-                            st.text_input(f"{self.your_name} and {self.talking_partner} have", value=f"{self.interaction_love} LOVE RATIO 💝", key="interaction_result")
-                            st.text_input(f"{self.your_name} and {self.talking_partner} spent", value=f"{self.available_ratio} most of the time talking everyday ⏰", key="available_result")
+                            st.text_input(f"{self.your_name} and {self.talking_partner} have", value=f"{self.interaction_love} LOVE RATIO 💝",
+                                          key="interaction_result")
+                            st.text_input(f"{self.your_name} and {self.talking_partner} spent", value=f"{self.available_ratio}most of the time talking everyday ⏰",
+                                          key="available_result")
                             if self.ratio_calculation.talking_ratio >= 50 and self.ratio_calculation.available_life_ratio >= 50:
                                 self.rain_both()
                             elif self.ratio_calculation.talking_ratio >= 50 and self.ratio_calculation.available_life_ratio <50:
