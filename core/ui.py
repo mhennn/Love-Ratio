@@ -50,22 +50,23 @@ class UiApp:
                     st.warning("Input number Only.")
                 else:
                     if st.button("Calculate"):
-                        self.calculate_love(self.hours_talking, self.how_long)
-                        if self.love_loading():
-                            st.text_input(f"{self.your_name} and {self.talking_partner} have", value=f"{self.interaction_love} LOVE RATIO 💝",
-                                          key="interaction_result")
-                            st.text_input(f"{self.your_name} and {self.talking_partner} spent", value=f"{self.available_ratio}most of the time talking everyday ⏰",
-                                          key="available_result")
-                            if self.ratio_calculation.talking_ratio >= 50 and self.ratio_calculation.available_life_ratio >= 50:
-                                self.rain_both()
-                            elif self.ratio_calculation.talking_ratio >= 50 and self.ratio_calculation.available_life_ratio <50:
-                                self.rain_one()
-                            elif self.ratio_calculation.talking_ratio < 50 and self.ratio_calculation.available_life_ratio >= 50:
-                                self.rain_one()
-                            else:
-                                self.rain_none()
-            else:
-                st.warning("Enter hours and days")
+                        if self.talking_partner or self.your_name or self.how_long or self.hours_talking:
+                            self.calculate_love(self.hours_talking, self.how_long)
+                            if self.love_loading():
+                                st.text_input(f"{self.your_name} and {self.talking_partner} have", value=f"{self.interaction_love} LOVE RATIO 💝",
+                                            key="interaction_result")
+                                st.text_input(f"{self.your_name} and {self.talking_partner} spent", value=f"{self.available_ratio}most of the time talking everyday ⏰",
+                                            key="available_result")
+                                if self.ratio_calculation.talking_ratio >= 50 and self.ratio_calculation.available_life_ratio >= 50:
+                                    self.rain_both()
+                                elif self.ratio_calculation.talking_ratio >= 50 and self.ratio_calculation.available_life_ratio <50:
+                                    self.rain_one()
+                                elif self.ratio_calculation.talking_ratio < 50 and self.ratio_calculation.available_life_ratio >= 50:
+                                    self.rain_one()
+                                else:
+                                    self.rain_none()
+                        else:
+                            st.warning("Enter hours and days")
 
     def calculate_love(self, hours, days):
         self.interaction_love = self.ratio_calculation.interaction_ratio(days, hours)
